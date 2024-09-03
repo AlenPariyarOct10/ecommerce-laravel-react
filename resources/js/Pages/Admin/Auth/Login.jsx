@@ -1,9 +1,9 @@
-import Checkbox from '@/Components/Checkbox';
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import Checkbox from '@/Components/Checkbox.jsx';
+import GuestLayout from '@/Layouts/GuestLayout.jsx';
+import InputError from '@/Components/InputError.jsx';
+import InputLabel from '@/Components/InputLabel.jsx';
+import PrimaryButton from '@/Components/PrimaryButton.jsx';
+import TextInput from '@/Components/TextInput.jsx';
 import { Head, Link, useForm } from '@inertiajs/react';
 import NavLink from "@/Components/NavLink.jsx";
 
@@ -17,7 +17,7 @@ export default function Login({ status, canResetPassword }) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('login'), {
+        post(route('admin.login'), {
             onFinish: () => reset('password'),
         });
     };
@@ -74,14 +74,6 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
 
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Log in
@@ -89,15 +81,7 @@ export default function Login({ status, canResetPassword }) {
 
 
                 </div>
-                <div className="flex items-center justify-center text-center justify-end mt-4">
-                    <p className="text-gray-500 pr-3">Create new account ? </p>
-                    <Link
-                        href={route('register')}
-                        className="underline font-bold text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                    >
-                         Register user
-                    </Link>
-                </div>
+
             </form>
         </GuestLayout>
     );
